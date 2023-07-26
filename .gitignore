@@ -1,3 +1,5 @@
+.vs/
+App.Api/App.Api.csproj.user
 App.Api/.vs/
 App.Api/obj/
 App.Domain/obj/
@@ -8,3 +10,4 @@ App.Api/bin/
 App.Domain/bin/
 App.Application/bin/
 App.Infrastructure/bin/
+/App.Api/App.Api.csproj.user
