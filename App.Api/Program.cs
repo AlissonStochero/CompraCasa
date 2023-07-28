@@ -1,7 +1,11 @@
+using App.Api.Filters;
 using App.Application.Commands.UsuarioCommands.CriarUsuario;
+using App.Application.Validators;
 using App.Domain.Repositories;
 using App.Infrastructure.Persistence;
 using App.Infrastructure.Persistence.Repositories;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -9,7 +13,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(c =>
+    {
+        c.Filters.Add(typeof(ValidationFilter));
+    });
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -27,6 +35,12 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 );
 
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+
+//builder.Services
+//    .AddValidatorsFromAssemblyContaining<CriarUsuarioCommandValidador>()
+//    .AddFluentValidationAutoValidation();
+
+builder.Services.AddTransient<IValidator<CriarUsuarioCommand>, CriarUsuarioCommandValidador>();
 
 var app = builder.Build();
 
