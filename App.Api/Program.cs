@@ -1,5 +1,7 @@
 using App.Application.Commands.UsuarioCommands.CriarUsuario;
+using App.Domain.Repositories;
 using App.Infrastructure.Persistence;
+using App.Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -23,6 +25,8 @@ builder.Services.AddMediatR(cfg =>
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseInMemoryDatabase("CompraCasaDb")
 );
+
+builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
 var app = builder.Build();
 
