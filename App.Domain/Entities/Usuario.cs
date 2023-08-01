@@ -12,6 +12,7 @@ public class Usuario : BaseEntity
     }
     public Usuario(Usuario usuario)
     {
+        Id = usuario.Id;
         Nome = usuario.Nome;
         Email = usuario.Email;
         Senha = string.Empty;

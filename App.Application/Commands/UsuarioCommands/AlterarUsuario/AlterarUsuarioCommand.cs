@@ -10,13 +10,13 @@ namespace App.Application.Commands.UsuarioCommands.AlterarUsuario
 {
     public class AlterarUsuarioCommand : IRequest<Unit>
     {
-        public AlterarUsuarioCommand(Guid id, string nome, string email)
+        public AlterarUsuarioCommand(int id, string nome, string email)
         {
             Id = id;
             Nome = nome;
             Email = email;
         }
-        public Guid Id { get; private set; }
+        public int Id { get; private set; }
         public string Nome { get; private set; }
         public string Email { get; private set; }
     }

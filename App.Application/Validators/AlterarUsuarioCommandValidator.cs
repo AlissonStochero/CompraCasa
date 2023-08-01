@@ -7,6 +7,8 @@ namespace App.Application.Validators
     {
         public AlterarUsuarioCommandValidator()
         {
+            RuleFor(x => x.Id).NotEmpty().NotNull()
+            .WithMessage("O campo Id deve ser um ID válido.");
             RuleFor(x => x.Nome).Length(10, 100).WithMessage("Informe o nome completo.");
             RuleFor(x => x.Email).EmailAddress().WithMessage("Endereço de e-mail invalido.");
         }

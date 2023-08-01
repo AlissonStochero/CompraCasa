@@ -1,4 +1,5 @@
-﻿using App.Application.Commands.UsuarioCommands.CriarUsuario;
+﻿using App.Application.Commands.UsuarioCommands.AlterarUsuario;
+using App.Application.Commands.UsuarioCommands.CriarUsuario;
 using App.Application.Validators;
 using FluentValidation;
 using MediatR;
@@ -20,5 +21,17 @@ public class UsuarioController : ControllerBase
     public async Task<IActionResult> CriarUsuario([FromBody] CriarUsuarioCommand usuario)
     {
         return CreatedAtAction(nameof(CriarUsuario), await _mediator.Send(usuario));
+    }
+    [HttpPut]
+    public async Task<IActionResult> AlterarUsuario([FromBody] AlterarUsuarioCommand usuario)
+    {
+        try
+        {
+            return CreatedAtAction(nameof(AlterarUsuario), await _mediator.Send(usuario));
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
     }
 }

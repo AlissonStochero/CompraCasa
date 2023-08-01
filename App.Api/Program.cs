@@ -43,6 +43,7 @@ builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 //    .AddFluentValidationAutoValidation();
 
 builder.Services.AddTransient<IValidator<CriarUsuarioCommand>, CriarUsuarioCommandValidador>();
+builder.Services.AddTransient<IValidator<AlterarUsuarioCommand>, AlterarUsuarioCommandValidator>();
 
 var app = builder.Build();
 

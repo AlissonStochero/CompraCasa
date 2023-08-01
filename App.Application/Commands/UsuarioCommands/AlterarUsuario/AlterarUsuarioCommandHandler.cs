@@ -15,7 +15,8 @@ namespace App.Application.Commands.UsuarioCommands.AlterarUsuario
         {
             var usuario = await usuarioRepository.GetUsuarioByIdAsync(request.Id);
 
-            ArgumentException.ThrowIfNullOrEmpty(nameof(usuario), "Usuário não encontrado.");
+            if(usuario is null)
+                throw new ArgumentException("Usuário não encontrado.");
 
             usuario.Update(request.Nome, request.Email);
             await usuarioRepository.UpdateUsuarioAsync(usuario);
