@@ -20,7 +20,7 @@ public class UsuarioRepository : IUsuarioRepository
     }
 
     // READ
-    public async Task<Usuario> GetUsuarioByIdAsync(int id)
+    public async Task<Usuario> GetUsuarioByIdAsync(Guid id)
     {
         return await _context.Usuarios.FindAsync(id);
     }

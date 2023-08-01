@@ -1,4 +1,5 @@
 using App.Api.Filters;
+using App.Application.Commands.UsuarioCommands.AlterarUsuario;
 using App.Application.Commands.UsuarioCommands.CriarUsuario;
 using App.Application.Validators;
 using App.Domain.Repositories;
@@ -28,6 +29,7 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddMediatR(cfg =>
 {
     cfg.RegisterServicesFromAssembly(typeof(CriarUsuarioCommand).Assembly);
+    cfg.RegisterServicesFromAssembly(typeof(AlterarUsuarioCommand).Assembly);
 });
 
 builder.Services.AddDbContext<AppDbContext>(options =>

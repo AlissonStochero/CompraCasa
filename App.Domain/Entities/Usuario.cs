@@ -21,4 +21,10 @@ public class Usuario : BaseEntity
     public string Nome { get; private set; }
     public string Email { get; private set; }
     public string Senha { get; private set; }
+
+    public void Update(string nome, string email)
+    {
+        Nome = nome;
+        Email = email;
+    }
 }

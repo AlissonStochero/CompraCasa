@@ -7,7 +7,7 @@ public interface IUsuarioRepository
     public Task<Usuario> CreateUsuarioAsync(Usuario usuario);
 
     // READ
-    public Task<Usuario> GetUsuarioByIdAsync(int id);
+    public Task<Usuario> GetUsuarioByIdAsync(Guid id);
 
     public Task<Usuario> GetUsuarioByEmailAsync(string email);
 

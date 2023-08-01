@@ -14,6 +14,7 @@ namespace App.Application.Validators
         {
             RuleFor(x => x.Nome).Length(10, 100).WithMessage("Informe o nome completo.");
             RuleFor(x => x.Email).EmailAddress().WithMessage("Endereço de e-mail invalido.");
+            RuleFor(x => x.Senha).NotEmpty().NotNull().WithMessage("Senha é invalida.");
         }
     }
 }
