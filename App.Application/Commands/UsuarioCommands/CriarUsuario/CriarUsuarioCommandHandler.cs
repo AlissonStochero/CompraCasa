@@ -16,6 +16,6 @@ public class CriarUsuarioCommandHandler : IRequestHandler<CriarUsuarioCommand, U
     {
         var usuario = new Usuario(request.Nome, request.Email, request.Senha);
         var usuarioCadastrado = await usuarioRepository.CreateUsuarioAsync(usuario);
-        return usuarioCadastrado;
+        return new Usuario(usuarioCadastrado);
     }
 }

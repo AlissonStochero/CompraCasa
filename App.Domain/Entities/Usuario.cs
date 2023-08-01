@@ -10,6 +10,14 @@ public class Usuario : BaseEntity
         CriadoEm = DateTime.Now;
         AlteradoEm = DateTime.Now;
     }
+    public Usuario(Usuario usuario)
+    {
+        Nome = usuario.Nome;
+        Email = usuario.Email;
+        Senha = string.Empty;
+        CriadoEm = usuario.CriadoEm;
+        AlteradoEm = usuario.AlteradoEm;
+    }
     public string Nome { get; private set; }
     public string Email { get; private set; }
     public string Senha { get; private set; }
