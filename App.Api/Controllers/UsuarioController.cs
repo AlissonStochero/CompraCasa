@@ -1,9 +1,9 @@
 ﻿using App.Application.Commands.UsuarioCommands.AlterarUsuario;
 using App.Application.Commands.UsuarioCommands.CriarUsuario;
-using App.Application.Validators;
-using FluentValidation;
+using App.Application.Commands.UsuarioCommands.ExcluirUsuario;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace App.Api.Controllers;
 
@@ -28,6 +28,23 @@ public class UsuarioController : ControllerBase
         try
         {
             return CreatedAtAction(nameof(AlterarUsuario), await _mediator.Send(usuario));
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+    [HttpDelete]
+    public async Task<IActionResult> ExcluirUsuario([FromBody] ExcluirUsuarioCommand usuario)
+    {
+        try
+        {
+            await _mediator.Send(usuario);
+            return Ok();
+        }
+        catch (DeletedRowInaccessibleException ex)
+        {
+            return NotFound(ex.Message);
         }
         catch (Exception ex)
         {

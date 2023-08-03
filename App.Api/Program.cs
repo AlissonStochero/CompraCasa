@@ -1,6 +1,7 @@
 using App.Api.Filters;
 using App.Application.Commands.UsuarioCommands.AlterarUsuario;
 using App.Application.Commands.UsuarioCommands.CriarUsuario;
+using App.Application.Commands.UsuarioCommands.ExcluirUsuario;
 using App.Application.Validators;
 using App.Domain.Repositories;
 using App.Infrastructure.Persistence;
@@ -44,6 +45,7 @@ builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
 builder.Services.AddTransient<IValidator<CriarUsuarioCommand>, CriarUsuarioCommandValidador>();
 builder.Services.AddTransient<IValidator<AlterarUsuarioCommand>, AlterarUsuarioCommandValidator>();
+builder.Services.AddTransient<IValidator<ExcluirUsuarioCommand>, ExcluirUsuarioCommandValidator>();
 
 var app = builder.Build();
 
