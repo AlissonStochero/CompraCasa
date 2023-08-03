@@ -1,5 +1,6 @@
 ﻿using App.Domain.Repositories;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace App.Application.Commands.UsuarioCommands.AlterarUsuario
 {
@@ -16,7 +17,7 @@ namespace App.Application.Commands.UsuarioCommands.AlterarUsuario
             var usuario = await usuarioRepository.GetUsuarioByIdAsync(request.Id);
 
             if(usuario is null)
-                throw new ArgumentException("Usuário não encontrado.");
+                throw new DbUpdateException("Usuário não encontrado.");
 
             usuario.Update(request.Nome, request.Email);
             await usuarioRepository.UpdateUsuarioAsync(usuario);

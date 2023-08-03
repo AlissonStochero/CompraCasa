@@ -3,6 +3,7 @@ using App.Application.Commands.UsuarioCommands.CriarUsuario;
 using App.Application.Commands.UsuarioCommands.ExcluirUsuario;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Data;
 
 namespace App.Api.Controllers;
@@ -27,7 +28,11 @@ public class UsuarioController : ControllerBase
     {
         try
         {
-            return CreatedAtAction(nameof(AlterarUsuario), await _mediator.Send(usuario));
+            return Ok(await _mediator.Send(usuario));
+        }
+        catch (DbUpdateException ex)
+        {
+            return NotFound(ex.Message);
         }
         catch (Exception ex)
         {
